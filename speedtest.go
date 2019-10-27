@@ -10,14 +10,13 @@ done
 import (
 	"encoding/json"
 	"fmt"
+	"gopkg.in/alexcesaro/statsd.v2"
 	"io/ioutil"
 	"log"
 	"os"
 	"os/exec"
 	"strconv"
 	"strings"
-
-	"gopkg.in/alexcesaro/statsd.v2"
 )
 
 func main() {
@@ -58,11 +57,11 @@ func main() {
 	fmt.Println("Length:", len(splitString))
 
 	// Server ID,Sponsor,Server Name,Timestamp,Distance,Ping,Download,Upload
-	if len(splitString) == 11 {
-		distanceString := splitString[5]
-		pingString := splitString[6]
-		downloadString := splitString[7]
-		uploadString := splitString[8]
+	if len(splitString) == 10 {
+		distanceString := splitString[4]
+		pingString := splitString[5]
+		downloadString := splitString[6]
+		uploadString := splitString[7]
 
 		var distance, _ = strconv.ParseFloat(distanceString, 64)
 		var ping, _ = strconv.ParseFloat(pingString, 64)
